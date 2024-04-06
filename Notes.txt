@@ -1,0 +1,18 @@
+
+Explore 
+-- TMDB API 
+
+
+
+Resources 
+-- https://docs.google.com/spreadsheets/d/1iZ29R7sHjRjiKfFymWVLZ4o5l4y8iAUKHZADGfb1fuc/edit?usp=sharing
+
+
+
+Changes 
+-- Single Media Details Page 
+-- Search in different Sections according to selected sections 
+
+
+Questions 
+-- What is yup 
