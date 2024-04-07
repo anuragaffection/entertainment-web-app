@@ -16,3 +16,121 @@ Changes
 
 Questions 
 -- What is yup 
+
+
+
+
+
+Routing concept 
+
+-- 1. Within the "profile" route:
+-- The "login" and "register" routes are nested under the "/profile" path. These routes are intended to be used within the context of the user's profile. When a user navigates to "/profile/login" or "/profile/register", they are accessing authentication-related functionalities within their profile.
+
+-- 2. Outside of the "profile" route:
+-- The "login" and "register" routes are also defined separately at the root level of the router. These routes are standalone routes accessible directly from the root path ("/"). They are not nested under the "/profile" path. These routes may serve as entry points for users who want to directly access the login or registration functionality without going through their profile.
+
+
+
+
+
+
+
+// routing 
+const router = createBrowserRouter(
+  [
+    {
+      path: "/", // Root path
+      element: <Home />, // Render the Home component
+      children: [
+        {
+          path: "/search/:mediaType/:searchQuery", // Search media route
+          element: <SearchResult />,
+        },
+        {
+          path: "/movie", // Movie routes
+          children: [
+            {
+              path: "/movie", // Movie home route
+              element: <Movie />,
+            },
+            {
+              path: "/movie/:mediaId", // movie details 
+              element: <MediaDetails />,
+            },
+            {
+              path: "/movie/search/:mediaType/:searchQuery", // Movie search route
+              element: <SearchResult />,
+            },
+          ],
+        },
+        {
+          path: "/tv", // TV routes
+          children: [
+            {
+              path: "/tv", // TV home route
+              element: <Tv />,
+            },
+            {
+              path: "/tv/:mediaId", // Tv details
+              element: <MediaDetails />,
+            },
+            {
+              path: "/tv/search/:mediaType/:searchQuery", // TV search route
+              element: <SearchResult />,
+            },
+          ],
+        },
+        {
+          path: "/bookmarks", // Bookmarks routes
+          children: [
+            {
+              path: "/bookmarks", // Bookmarks home route
+              element: <Bookmarks />,
+            },
+            {
+              path: "/bookmarks/search/:mediaType/:?searchQuery", // Bookmarks search route
+              element: <SearchResult />,
+            },
+          ],
+        },
+        {
+          path: '/profile', // profile route 
+          children: [
+            {
+              path: '/profile',
+              element: <Profile />,
+            },
+            {
+              path: '/profile/login', // login route 
+              element: <Login />,
+            },
+            {
+              path: '/profile/register', // register route 
+              element: <Register />,
+            },
+          ]
+        }
+      ],
+    },
+    {
+      path: '/profile', // Profile route 
+      element: <Profile />,
+    },
+    {
+      path: '/profile/login', // login route 
+      element: <Login />,
+    },
+    {
+      path: '/profile/register', // register route 
+      element: <Register />,
+    },
+    {
+      path: "/movie/:mediaId", // Movie detail route
+      element: <MediaDetails />,
+    },
+    {
+      path: "/tv/:mediaId", // TV detail route
+      element: <MediaDetails />,
+    },
+  ]
+);
