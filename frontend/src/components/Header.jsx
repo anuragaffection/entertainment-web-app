@@ -1,10 +1,11 @@
-// Importing required icons and hooks from libraries
+// importing from packages 
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+// Importing icons 
 import { AiFillAppstore } from "react-icons/ai";
 import { HiBookmark } from "react-icons/hi2";
 import { MdLocalMovies, MdMovie } from "react-icons/md";
 import { TbDeviceTvOld } from "react-icons/tb";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-// import { logoutUser } from "../service/user.service";
 
 // Header component
 const Header = () => {
@@ -17,9 +18,9 @@ const Header = () => {
         // Header container with responsive styling
         <div className="w-11/12 mx-auto sticky top-0 h-fit rounded-xl bg-deepBlue flex px-2 py-3 z-50 items-center justify-between lg:h-[99%] lg:w-[5%] lg:flex-col ">
             {/* Movie icon */}
-            <MdMovie className="text-darkRed text-3xl md:text-4xl" />
+            <MdMovie className="p-1 text-darkRed text-3xl md:text-4xl ring-1 ring-darkRed rounded-full" />
             {/* Navigation links */}
-            <div className="flex w-2/3 h-fit items-center justify-center gap-5 text-xl md:text-2xl lg:flex-col lg:h-2/3 lg:justify-start lg:gap-8 lg:text-3xl">
+            <div className="flex lg:flex-col w-2/3 h-fit lg:h-2/3 items-center justify-center lg:justify-start text-xl md:text-2xl lg:text-3xl gap-6 lg:gap-8 ">
                 {/* Home link */}
                 <AiFillAppstore
                     onClick={() => navigate("/")}
@@ -61,20 +62,9 @@ const Header = () => {
                     }
                 />
             </div>
-            {/* Logout button */}
+            {/* profile button */}
             <button
-                onClick={() => {
-                    // Redirect to signup if user is not logged in, otherwise logout user
-                    if (!document.cookie) {
-                        navigate("/signup");
-                        return;
-                    }
-                    logoutUser();
-                    navigate("/");
-                    setTimeout(() => {
-                        document.location.reload();
-                    }, 2000);
-                }}
+                onClick={() => navigate("/profile")}
                 className="h-fit w-fit ring-darkRed ring-1 rounded-full p-1">
                 {/* User profile image */}
                 <img
@@ -87,4 +77,5 @@ const Header = () => {
     );
 };
 
-export default Header; // Exporting Header component
+export default Header; 
+// Exporting Header component

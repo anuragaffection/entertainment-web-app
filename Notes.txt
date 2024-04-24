@@ -1,12 +1,24 @@
 
+Issue 
+-- Data fetching problem, taking more times , taking extra call
+
+
+
 Explore 
 -- TMDB API 
+-- https://developer.themoviedb.org/docs/getting-started
+-- https://trello.com/b/bVlsp6wz/api
 
 
 
 Resources 
+-- https://dev.to/kareemsulaimon/create-a-movie-app-with-react-and-tmdb-api-aeo
+-- https://github.com/kylejvh/MovieCards
+-- https://github.com/gagandeepsingh101/entertainment-app
+-- https://documenter.getpostman.com/view/29682764/2sA2xmVB3S
 -- https://docs.google.com/spreadsheets/d/1iZ29R7sHjRjiKfFymWVLZ4o5l4y8iAUKHZADGfb1fuc/edit?usp=sharing
-
+-- https://docs.google.com/document/d/1iWpAIfILl7cN4DK83MJfC0teh3CVMQW79ts3X503EkQ/edit#heading=h.51zzxxrmb6yg
+-- https://www.isitdownrightnow.com/themoviedb.org.html
 
 
 Changes 
@@ -16,8 +28,14 @@ Changes
 
 Questions 
 -- What is yup 
+-- JSON vs JSONP
 
 
+
+Naming convention 
+-- userRoute.js 
+-- user.route.js 
+both are good, still user.route.js recommended 
 
 
 
