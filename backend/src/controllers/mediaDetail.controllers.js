@@ -23,13 +23,6 @@ const movieDetailController = async (req, res) => {
         });
 
     } catch (error) {
-        // If movie not found, respond with 404 error.
-        if (error.response.status === 404) {
-            return res.status(404).json({
-                success: false,
-                message: "Page Not Found",
-            });
-        }
         // response with error 
         res.status(500).json({
             success: false,
@@ -62,12 +55,12 @@ const tvDetailController = async (req, res) => {
 
     } catch (error) {
         // If TV shows is not found, respond with 404 error.
-        if (error.response.status === 404) {
-            return res.status(404).json({
-                success: false,
-                message: "Page Not Found",
-            });
-        }
+        // if (error.response.status === 404) {
+        //     return res.status(404).json({
+        //         success: false,
+        //         message: "Page Not Found",
+        //     });
+        // }
         // responsw with error 
         res.status(500).json({
             success: false,

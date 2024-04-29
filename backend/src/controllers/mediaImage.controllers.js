@@ -33,7 +33,7 @@ const movieImageController = async (req, res) => {
 }
 
 
-// tv image , thumbnail or posters 
+// tv image , thumbnail or backdrops 
 const tvImageController = async (req, res) => {
     try {
         const { seriesId } = req.params;
@@ -43,16 +43,15 @@ const tvImageController = async (req, res) => {
         const data = await fetchData(updatedTvImageUrl + process.env.TMDB_KEY);
 
         // Check if data contains posters
-        if (data.posters && data.posters.length > 0) {
+        if (data.backdrops && data.backdrops.length > 0) {
             res.json({
                 success: true,
-                imagePath: data.posters[0].file_path,
+                imagePath: data.backdrops[0].file_path,
             });
         } else {
             res.json({
                 success: false,
                 message: "No posters found for this shows.",
-                data
             });
         }
     } catch (error) {

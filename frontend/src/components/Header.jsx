@@ -7,6 +7,8 @@ import { HiBookmark } from "react-icons/hi2";
 import { MdLocalMovies, MdMovie } from "react-icons/md";
 import { TbDeviceTvOld } from "react-icons/tb";
 
+import userImage from '../assets/userImage.jpg'
+
 // Header component
 const Header = () => {
     // Using react-router-dom hooks for navigation and getting current location
@@ -25,7 +27,7 @@ const Header = () => {
                 <AiFillAppstore
                     onClick={() => navigate("/")}
                     className={
-                        "hover:text-white cursor-pointer " +
+                        "hover:text-darkRed cursor-pointer " +
                         (pathname === "/" || mediaType === "multi"
                             ? "text-darkRed"
                             : "text-waikawaGrey")
@@ -35,7 +37,7 @@ const Header = () => {
                 <MdLocalMovies
                     onClick={() => navigate("/movie")}
                     className={
-                        "hover:text-white cursor-pointer " +
+                        "hover:text-darkRed cursor-pointer " +
                         (pathname === "/movie" || mediaType === "movie"
                             ? "text-darkRed"
                             : "text-waikawaGrey")
@@ -45,7 +47,7 @@ const Header = () => {
                 <TbDeviceTvOld
                     onClick={() => navigate("/tv")}
                     className={
-                        "hover:text-white cursor-pointer " +
+                        "hover:text-darkRed cursor-pointer " +
                         (pathname === "/tv" || mediaType === "tv"
                             ? "text-darkRed"
                             : "text-waikawaGrey")
@@ -55,7 +57,7 @@ const Header = () => {
                 <HiBookmark
                     onClick={() => navigate("/bookmarks")}
                     className={
-                        "hover:text-white cursor-pointer " +
+                        "hover:text-darkRed cursor-pointer " +
                         (pathname === "/bookmarks" || mediaType === "bookmarks"
                             ? "text-darkRed"
                             : "text-waikawaGrey")
@@ -69,8 +71,8 @@ const Header = () => {
                 {/* User profile image */}
                 <img
                     className="rounded-full h-8 w-8 lg:w-10 lg:h-10"
-                    src="https://www.fakepersongenerator.com/Face/male/male20141085936910461.jpg"
-                    alt=""
+                    src={userImage}
+                    alt="user Image"
                 />
             </button>
         </div>

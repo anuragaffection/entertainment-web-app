@@ -8,7 +8,9 @@ import Register from '../components/AuthComponents/Register'
 function Profile() {
     return (
         <div>
-            <h1>Welcome to profile pages</h1>
+          
+            <h1> First Time - Register Here </h1>
+            <h1> Already have account - Login Here </h1>
             <div>
                 <Login/>
                 <Logout/>
