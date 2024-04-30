@@ -23,7 +23,7 @@ mediaRouter.get("/media/tv/detail/:seriesId", tvDetailController);
 //searching movies, Tvshows, and all media routes
 mediaRouter.get("/media/movie/search/:searchQuery", searchMovieController);
 mediaRouter.get("/media/tv/search/:searchQuery", searchTvController);
-mediaRouter.get("/media/all/search:searchQuery", searchAllController);
+mediaRouter.get("/media/all/search/:searchQuery", searchAllController);
 
 // exporting router 
 module.exports = { mediaRouter }

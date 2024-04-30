@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+
 import Movie from './Movie';
 import Tv from './Tv';
+
 import MediaCard from '../components/MediaComponents/MediaCard';
+import MediaBookmark from '../components/MediaComponents/MediaBookmark';
 
 import { DNA } from "react-loader-spinner";
 import { MdLocalMovies } from 'react-icons/md';
 import { TbDeviceTvOld } from "react-icons/tb";
 import { LuDot } from "react-icons/lu";
 import { IoPlayCircle } from "react-icons/io5";
-import { CiBookmark } from "react-icons/ci";
+
 
 // backend must be running 
 const tmdbActionUrl = 'http://localhost:8000/api';
@@ -53,9 +56,7 @@ function Home() {
                                             mediaType={"Movie"}
                                         />
 
-                                        <div className="absolute p-3 top-1 right-1 bg-black hover:bg-darkRed duration-100 cursor-pointer rounded-full z-10">
-                                            < CiBookmark />
-                                        </div>
+                                        <MediaBookmark />
 
                                         {isHovered === singleMediaData.id && (
                                             <div className='absolute h-full w-full top-0 left-0 flex items-center justify-center bg-black bg-opacity-60 rounded-lg'>

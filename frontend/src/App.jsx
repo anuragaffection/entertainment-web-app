@@ -16,11 +16,12 @@ import SearchBar from './components/SearchBar'
 import SearchResult from './components/SearchResult'
 
 // importing auth components 
-import Login from './components/AuthComponents/Login'
-import Register from './components/AuthComponents/Logout'
+import Login from "./components/AuthComponents/Login"
+import Register from './components/AuthComponents/Register'
 
 // media components 
 import MediaDetails from './components/MediaComponents/MediaDetails'
+
 
 // app 
 function App() {
@@ -56,10 +57,7 @@ function App() {
           <Route path="/bookmarks" element={<Bookmarks />} />
 
           {/* search routes  */}
-          <Route path="/all/search/:mediaType/:searchQuery" element={<SearchResult />} />
-          <Route path="/movie/search/:mediaType/:searchQuery" element={<SearchResult />} />
-          <Route path="/tv/search/:mediaType/:searchQuery" element={<SearchResult />} />
-          <Route path="/bookmarks/search/:mediaType/:?searchQuery" element={<SearchResult />} />
+          <Route path="/:mediaType/search/:searchQuery" element={<SearchResult />} />
 
           {/* profile routes  */}
           <Route path="/profile" element={<Profile />} />

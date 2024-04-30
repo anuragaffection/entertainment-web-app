@@ -15,10 +15,10 @@ const SearchBar = () => {
         // Switch statement to handle different pathnames
         switch (pathname) {
             case "/":
-                navigate(`all/search//${encodeURIComponent(data.searchQuery)}`);
+                navigate(`all/search/${encodeURIComponent(data.searchQuery)}`);
                 break;
             case "/movie":
-                navigate(`movie/search//${encodeURIComponent(data.searchQuery)}`);
+                navigate(`movie/search/${encodeURIComponent(data.searchQuery)}`);
                 break;
             case "/tv":
                 navigate(`tv/search/${encodeURIComponent(data.searchQuery)}`);
@@ -27,9 +27,7 @@ const SearchBar = () => {
                 navigate(`bookmarks/search/${encodeURIComponent(data.searchQuery)}`);
                 break;
             default:
-                navigate(
-                    `/search/${mediaType}/${encodeURIComponent(data.searchQuery)}` // check again 
-                );
+                navigate(`/all/search/${encodeURIComponent(data.searchQuery)}`);
         }
         // Reset form after submission
         reset(); // from where it is comming 
