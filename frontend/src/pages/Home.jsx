@@ -52,7 +52,7 @@ function Home() {
                                     >
                                         <MediaCard
                                             singleMediaData={singleMediaData}
-                                            fieldType={"movie"}
+                                           
                                             mediaType={"Movie"}
                                         />
 

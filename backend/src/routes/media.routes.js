@@ -27,3 +27,4 @@ mediaRouter.get("/media/all/search/:searchQuery", searchAllController);
 
 // exporting router 
 module.exports = { mediaRouter }
+

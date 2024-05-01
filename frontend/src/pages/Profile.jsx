@@ -22,7 +22,7 @@ function Profile() {
                 },
                 withCredentials: true,
             });
-            console.log(api.data.user);
+            // console.log(api.data.user);
             myState.setUser(api.data.user)
             myState.setIsAuthenticated(true);
         }

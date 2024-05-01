@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MdLocalMovies } from "react-icons/md";
 import { LuDot } from "react-icons/lu";
 import { IoPlayCircle } from "react-icons/io5";
-import { useQuery } from 'react-query';
+import { useQuery, useMutation, queryCache } from 'react-query'; // Added useMutation and queryCache
 import axios from 'axios'
 import MediaCard from '../components/MediaComponents/MediaCard'
 import MediaBookmark from "../components/MediaComponents/MediaBookmark";
@@ -31,11 +31,9 @@ const Movie = () => {
         data: mediaData,
         isLoading,
         isError,
+        refetch, // Added refetch function
 
     } = useQuery(['media', 'movie'], () => fetchMultiMedia(1, "movie"));
-
-
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,32 +52,43 @@ const Movie = () => {
         fetchData();
     }, [bookmarkData]);
 
-
-
-
-    const postData = async () => {
-        try {
-            const { id, title, image, isAdult, mediaType, releaseDate } = bookmarkData;
-            const data = await axios.post(`http://localhost:8000/api/media/bookmark/add`, {
-                id: id,
-                title: title,
-                image: image,
-                isAdult: isAdult,
-                mediaType: mediaType,
-                releaseDate: releaseDate,
-            }, {
+    const { mutate: addBookmark } = useMutation( // Added useMutation for adding bookmark
+        (bookmarkData) =>
+            axios.post(`http://localhost:8000/api/media/bookmark/add`, bookmarkData, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
-            });
-
-        } catch (error) {
-            console.error("Error posting media data:", error);
+            }),
+        {
+            onSuccess: () => {
+                refetch(); // Refetch mediaData after successful bookmark addition
+            }
         }
-    }
+    );
 
+    const { mutate: removeBookmark } = useMutation( // Added useMutation for removing bookmark
+        (id) =>
+            axios.delete(`http://localhost:8000/api/media/bookmark/delete/${id}`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true,
+            }),
+        {
+            onSuccess: () => {
+                refetch(); // Refetch mediaData after successful bookmark removal
+            }
+        }
+    );
 
+    const handleBookmark = (singleMediaData) => {
+        if (bookmarkedIds.includes(singleMediaData.id)) {
+            removeBookmark(singleMediaData.id); // Remove bookmark if already bookmarked
+        } else {
+            addBookmark(singleMediaData); // Add bookmark if not bookmarked
+        }
+    };
 
     if (isLoading) return <DNA height={100} width={100} />;
     if (isError) return <div>Error fetching data</div>;
@@ -110,10 +119,7 @@ const Movie = () => {
                                     />
                                 ) : (
                                     <MediaBookmark
-                                        onClick={() => {
-                                            setBookmarkData(singleMediaData);
-                                            postData();
-                                        }}
+                                        onClick={() => handleBookmark(singleMediaData)} // Updated onClick event
                                     />
                                 )
                             }

@@ -13,7 +13,6 @@ import { LuDot } from "react-icons/lu";
 import { IoPlayCircle } from "react-icons/io5";
 
 const tmdbActionUrl = 'http://localhost:8000/api';
-// http://localhost:8000/api/media/all/search/superman
 
 function SearchResult() {
 
@@ -28,7 +27,7 @@ function SearchResult() {
             try {
                 const { data } = await axios.get(`${tmdbActionUrl}/media/${mediaType}/search/${searchQuery}`);
                 setMediaData(data.data);
-                console.log(data.data)
+                // console.log(data.data)
             } catch (error) {
                 console.error("Error fetching media data:", error);
             }

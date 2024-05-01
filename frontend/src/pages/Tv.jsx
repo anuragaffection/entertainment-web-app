@@ -44,11 +44,10 @@ const Tv = () => {
                         >
                             <MediaCard
                                 singleMediaData={singleMediaData}
-                                fieldType={"Tv"}
                                 mediaType={"Tv"}
                             />
 
-                            <MediaBookmark/>
+                            <MediaBookmark />
 
                             {isHovered === singleMediaData.id && (
                                 <div className='absolute h-full w-full top-0 left-0 flex items-center justify-center bg-black bg-opacity-60 rounded-lg'>
@@ -76,7 +75,7 @@ const Tv = () => {
                     </div>
                 ))}
             </div>
-            
+
         </div>
     );
 };

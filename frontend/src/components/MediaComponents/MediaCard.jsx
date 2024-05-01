@@ -3,18 +3,20 @@ import axios from 'axios'
 
 const tmdbActionUrl = 'http://localhost:8000/api'
 
+
+// fetching media images 
 const useFetchMediaImage = async (movieId, setMediaImage, mediaType) => {
     try {
         const data = await axios.get(`${tmdbActionUrl}/media/${mediaType}/image/${movieId}`);
         setMediaImage(data.data.imagePath);
     } catch (error) {
-        // Log error if fetching fails
         // console.error("Error fetching multi-media:", error);
     }
 };
 
-// where we are using fieldType 
-function MediaCard({ singleMediaData, fieldType, mediaType }) {
+
+// media card 
+function MediaCard({ singleMediaData,  mediaType }) {
 
     const fetchImage = useFetchMediaImage;
     const [mediaImage, setMediaImage] = useState(null);

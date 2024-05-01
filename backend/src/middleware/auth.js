@@ -14,6 +14,8 @@ const isAuthenticated = async (req, res, next) => {
     const secretToken = process.env.TOKEN;
 
     const decode = Jwt.verify(token, secretToken);
+
+    // we are assigning req.user, a find by findinng from mongodb 
     req.user = await User.findById(decode._id);
 
     next();

@@ -1,5 +1,17 @@
+// importing 
 const express = require('express')
+const { isAuthenticated } = require('../middleware/auth.js')
+const { checkBookmark, addBookmark, deleteBookmark, getBookmark, filterBookmark } = require('../controllers/bookmark.controllers.js')
 
-const router = express.Router();
+// router instances 
+const bookmarkRouter = express.Router();
 
-module.exports = { router }
+//bookmark routes 
+bookmarkRouter.get('/media/bookmark/check/:id', isAuthenticated, checkBookmark)
+bookmarkRouter.post('/media/bookmark/add', isAuthenticated, addBookmark)
+bookmarkRouter.delete('/media/bookmark/delete/:id', isAuthenticated, deleteBookmark)
+bookmarkRouter.get('/media/bookmark/get', isAuthenticated, getBookmark)
+bookmarkRouter.get('/media/bookmark/search/:searchQuery', isAuthenticated, filterBookmark)
+
+// exporting 
+module.exports = { bookmarkRouter }
