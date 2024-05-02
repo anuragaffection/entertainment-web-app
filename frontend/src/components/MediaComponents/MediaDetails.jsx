@@ -11,7 +11,9 @@ const tmdbActionUrl = 'http://localhost:8000/api';
 
 // fecthing data from api 
 function useFetchMediaDetail(mediaId, mediaType) {
+
     const [mediaDetail, setMediaDetail] = useState(null);
+
     useEffect(() => {
         const fetchMediaDetail = async () => {
             try {
@@ -36,6 +38,7 @@ function MediaDetails() {
     const location = useLocation();
 
     const mediaType = location.pathname.split('/')[1];
+    
     const { mediaId } = useParams();
 
     // Fetch media detail

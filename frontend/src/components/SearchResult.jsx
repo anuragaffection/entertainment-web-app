@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
-import MediaCard from '../components/MediaComponents/MediaCard';
+import MediaImage from '../components/MediaComponents/MediaImage';
 import MediaBookmark from '../components/MediaComponents/MediaBookmark';
 
 import { DNA } from "react-loader-spinner";
@@ -49,7 +49,7 @@ function SearchResult() {
                                     onMouseEnter={() => setIsHovered(singleMediaData.id)}
                                     onMouseLeave={() => setIsHovered(null)}
                                 >
-                                    <MediaCard
+                                    <MediaImage
                                         singleMediaData={singleMediaData}
                                         fieldType={"movie"}
                                         mediaType={"Movie"}

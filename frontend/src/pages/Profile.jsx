@@ -13,7 +13,7 @@ const baseUrl = 'http://localhost:8000/api'
 
 function Profile() {
     const myState = useContext(MyContext);
-  
+
     useEffect(() => {
         const fetchUser = async () => {
             const api = await axios.get(`${baseUrl}/user/profile`, {
@@ -41,9 +41,7 @@ function Profile() {
                             </div>
                             <div className="flex items-center gap-3 text-lg">
                                 <MdEmail />
-                                <span>
-                                    {" "} {myState.user.email}
-                                </span>
+                                <span>  {" "} {myState.user.email} </span>
                             </div>
                         </div>
                         <Logout />
