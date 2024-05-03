@@ -1,5 +1,6 @@
 const Jwt = require('jsonwebtoken')
 
+// function to generate cookies 
 const generateCookie = (user, res, statusCode = 200, message) => {
 
     const token = Jwt.sign({ _id: user._id }, process.env.TOKEN);

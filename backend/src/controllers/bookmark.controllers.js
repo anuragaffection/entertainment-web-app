@@ -1,6 +1,7 @@
 const { Bookmark } = require('../models/bookmark.models.js')
 
 
+// check bookmark if already exist 
 const checkBookmark = async (req, res) => {
     const { id } = req.params;
     try {
@@ -29,6 +30,7 @@ const checkBookmark = async (req, res) => {
         });
     }
 }
+
 
 // adding bookmarks 
 const addBookmark = async (req, res) => {

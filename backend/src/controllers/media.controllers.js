@@ -33,6 +33,7 @@ const trendingMediaController = async (req, res) => {
 
 
 // 02. movies media 
+// different page have different movie 
 const movieMediaController = async (req, res) => {
     try {
         // page  from request parameters
@@ -64,6 +65,7 @@ const movieMediaController = async (req, res) => {
 
 
 // 03. tv shows media 
+// different page have different movie 
 const tvMediaController = async (req, res) => {
     try {
         // page from request 

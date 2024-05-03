@@ -3,6 +3,7 @@ const { User } = require('../models/user.models.js')
 const { generateCookie } = require('../utils/user.utils.js')
 
 
+// user register 
 const userRegister = async (req, res) => {
 
     const { name, email, password } = req.body;  // destructuring 
@@ -21,11 +22,10 @@ const userRegister = async (req, res) => {
     });
 
     generateCookie(user, res, 201, "User Register Successfully");
-
 };
 
 
-
+// user login 
 const userLogin = async (req, res) => {
 
     const { email, password } = req.body;
@@ -48,11 +48,11 @@ const userLogin = async (req, res) => {
     }
 
     generateCookie(user, res, 201, `Welcome ${user.name}`);
-
 };
 
 
 
+// user logout 
 const userLogout = (req, res) => {
     res.status(200).cookie("token", "", {
         expires: new Date(Date.now())
@@ -63,7 +63,7 @@ const userLogout = (req, res) => {
 }
 
 
-
+// user profile details 
 const userProfile = async (req, res) => {
     res.status(200).json({
         success: true,
@@ -72,7 +72,7 @@ const userProfile = async (req, res) => {
 }
 
 
-
+// finding user by id 
 const getUserById = async (req, res) => {
     const id = req.params.id;
     const user = await User.findById(id);
@@ -90,6 +90,7 @@ const getUserById = async (req, res) => {
 }
 
 
+// exporting 
 module.exports = {
     userRegister, userLogin, userLogout, userProfile, getUserById
 }

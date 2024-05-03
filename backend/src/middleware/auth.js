@@ -1,7 +1,7 @@
 const Jwt = require('jsonwebtoken')
 const { User } = require('../models/user.models.js')
 
-
+// middleware to check authentication 
 const isAuthenticated = async (req, res, next) => {
 
     const { token } = req.cookies; // cookies  = in built things 

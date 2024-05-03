@@ -28,7 +28,7 @@ app.use("/api", bookmarkRouter);
 app.use("/api", mediaRouter);
 app.use("/api", userRouter);
 
-
+// home route 
 app.get('/', (req, res) => {
     res.json({
         message: "Welcome to home route "
