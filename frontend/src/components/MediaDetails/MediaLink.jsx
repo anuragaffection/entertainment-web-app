@@ -2,7 +2,7 @@ import React from 'react'
 import { HiLink } from "react-icons/hi";
 import { FaImdb } from "react-icons/fa";
 
-
+// available links of single media 
 function MediaLink({ mediaDetail }) {
     return (
         <div className="w-full flex gap-5">

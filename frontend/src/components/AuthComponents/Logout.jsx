@@ -1,19 +1,18 @@
-
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import MyContext from '../../context/MyContext';
+// from installed packages 
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 
+// from custom files 
+import MyContext from '../../context/MyContext';
 const baseUrl = 'http://localhost:8000/api'
 
+// logout components 
 function Logout() {
     const myState = useContext(MyContext)
     const navigate = useNavigate();
 
     const logout = async () => {
-
         const api = await axios.get(`${baseUrl}/user/logout`, {
             headers: {
                 "Content-Type": "application/json",
@@ -23,58 +22,26 @@ function Logout() {
 
         myState.setIsAuthenticated(false);
 
+        if (api.data && api.data.message) {
+            myState.setToast(true);
+            myState.setToastMessage(api.data.message)
+        } else {
+            myState.setToast(true);
+            myState.setToastMessage("Logout Successfully")
+        }
+
+
+
         setTimeout(() => {
             navigate('/');
         }, 100);
 
-        // console.log(api.data.message)
-
-        if (api.data && api.data.message) {
-            // console.log(api.data.message);
-            toast.success(api.data.message, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-        } else {
-            console.log("Logout Successfully");
-            toast.success("Logout Successfully", {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-        }
-
-        // myState.setIsAuthenticated(false);
-
-
+        // localStorage.removeItem('token');
     }
 
+    // logout button 
     return (
         <>
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
-
             <button
                 onClick={logout}
                 className="mb-4 px-6 py-2 flex gap-3 items-center bg-darkRed text-lg font-semibold rounded-full duration-100"

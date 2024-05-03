@@ -1,16 +1,16 @@
-// installed packages 
+// importing from installed packages 
 import React, { useContext, useEffect } from 'react'
 import { BiSolidUserCircle } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import axios from 'axios';
-import MyContext from '../context/MyContext'
 
-// importing auth components 
+// importing from custom files
+import MyContext from '../context/MyContext'
+import baseUrl from '../utils/baseUrl';
 import Login from '../components/AuthComponents/Login'
 import Logout from '../components/AuthComponents/Logout'
 
-const baseUrl = 'http://localhost:8000/api'
-
+// profile page 
 function Profile() {
     const myState = useContext(MyContext);
 

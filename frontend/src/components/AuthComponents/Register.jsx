@@ -1,13 +1,15 @@
+// from installed packages 
+import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios'
 import { MdMovie } from "react-icons/md";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+
+// from custom files 
 import MyContext from '../../context/MyContext';
+import baseUrl from '../../utils/baseUrl';
 
-const baseUrl = 'http://localhost:8000/api'
 
+// register components 
 function Register() {
 
     const myState = useContext(MyContext);
@@ -21,56 +23,33 @@ function Register() {
         e.preventDefault()
 
         try {
-            const api = await axios.post(`${baseUrl}/user/register`,
-                {
-                    name,
-                    email,
-                    password
+            const api = await axios.post(`${baseUrl}/user/register`, {
+                name,
+                email,
+                password
+            }, {
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    withCredentials: true,
-                }
-            );
-
-            toast.success(api.data.message, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+                withCredentials: true,
             });
 
+            myState.setToast(true);
+            myState.setToastMessage(api.data.message)
             myState.setIsAuthenticated(true)
 
             setTimeout(() => {
                 navigate('/profile')
             }, 1500);
-
-
         }
         catch (error) {
-            toast.error(error.response.data.message, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-
+            myState.setToast(true);
+            myState.setToastMessage(error.response.data.message)
             myState.setIsAuthenticated(false);
         }
-
     }
 
+    // css of register 
     const container = ` text-gray-200 px-4 pt-0 pb-4`;
     const wrapper = `flex flex-col gap-4 justify-center items-center my-3`;
     const title = `text-center text-4xl font-bold`;
@@ -80,29 +59,15 @@ function Register() {
     const inputStyle = `bg-gray-700 h-12 p-3 rounded-lg`;
     const submitButton = `text-lg font-semibold h-12 rounded-lg bg-darkRed`
 
-
     return (
         <>
-
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
-
-
             <div className={container}>
                 <div className={wrapper}>
                     <MdMovie className="text-darkRed text-center text-5xl md:text-6xl" />
                     <h1 className={title}>Register Here   </h1>
                     <form onSubmit={handleSubmit} className={registerForm}>
+
+                        {/* name input  */}
                         <div className={labelInputWrapper}>
                             <label htmlFor="exampleInputName" className={labelStyle}>Name </label>
                             <input
@@ -116,6 +81,7 @@ function Register() {
                             />
                         </div>
 
+                        {/* email input  */}
                         <div className={labelInputWrapper}>
                             <label htmlFor="exampleInputEmail" className={labelStyle}>Email address</label>
                             <input
@@ -128,6 +94,8 @@ function Register() {
                                 required
                             />
                         </div>
+
+                        {/* password input  */}
                         <div className={labelInputWrapper}>
                             <label htmlFor="exampleInputPassword" className={labelStyle}>Password</label>
                             <input
@@ -140,6 +108,7 @@ function Register() {
                                 required
                             />
                         </div>
+
                         <button type="submit" className={submitButton}>Submit</button>
                     </form>
                     <div className='hover:text-darkRed'>
@@ -148,8 +117,6 @@ function Register() {
 
                 </div>
             </div>
-
-
         </>
     )
 }

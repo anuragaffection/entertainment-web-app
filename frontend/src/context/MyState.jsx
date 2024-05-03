@@ -8,6 +8,8 @@ function MyState(props) {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [user, setUser] = useState({});
+    const [toast, setToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState(null)
     
 
     return (
@@ -17,6 +19,10 @@ function MyState(props) {
                 setIsAuthenticated,
                 user,
                 setUser,
+                toast,
+                setToast, 
+                toastMessage, 
+                setToastMessage
             }}
         >
             {props.children}
@@ -25,12 +31,3 @@ function MyState(props) {
 }
 
 export default MyState
-
-
-
-/*
--- props.children   refers to any content passed between the opening and closing tags 
-   of the AuthState component when it's used elsewhere in a parent component.
-
--- check main.jsx file 
-*/

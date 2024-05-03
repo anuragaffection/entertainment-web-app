@@ -1,6 +1,7 @@
 import React from 'react'
 import { CiBookmark } from "react-icons/ci";
 
+// boomark logo 
 function MediaBookmark({ onClick }) {
     return (
         <div

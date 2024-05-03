@@ -1,5 +1,6 @@
 import React from 'react'
 
+// synopsis of single media 
 function MediaSynopsis({mediaDetail}) {
     return (
         <div className="w-full flex flex-col gap-2">

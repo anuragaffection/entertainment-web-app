@@ -1,5 +1,6 @@
 import React from 'react'
 
+// heading details of single media 
 function MediaHeading({ mediaDetail }) {
     return (
         <div>

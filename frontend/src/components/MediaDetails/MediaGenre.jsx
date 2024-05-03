@@ -1,5 +1,6 @@
 import React from 'react'
 
+// genre details of singleMedia 
 function MediaGenre({ mediaDetail }) {
     return (
         <div className="w-full flex flex-col gap-1 lg:gap-3">

@@ -1,6 +1,9 @@
 // importing from packages 
-import React from "react"
+import React, { useContext } from "react"
 import { Routes, Route, useLocation } from 'react-router-dom'
+
+import MyContext from "./context/MyContext"
+import Toast from './components/CssComponents/Toast'
 
 // importing pages 
 import Bookmarks from './pages/Bookmarks'
@@ -23,9 +26,10 @@ import Register from './components/AuthComponents/Register'
 
 function App() {
   const location = useLocation();
+  const { toast } = useContext(MyContext)
 
   // hiding search bar 
-  const searchBarHiddenRoutes = ['/profile', '/profile/login', '/profile/register'];
+  const searchBarHiddenRoutes = ['/profile', '/profile/login', '/profile/register', '/bookmarks'];
   const isSearchBarHidden = searchBarHiddenRoutes.includes(location.pathname);
 
   // css 
@@ -49,23 +53,29 @@ function App() {
 
           {/* movies & tv routes  */}
           <Route path="/movie" element={<Movie />} />
-          <Route path="/movie/:mediaId" element={<Details />} />
           <Route path="/tv" element={<Tv />} />
+
+          {/* movie & tv details route */}
+          <Route path="/movie/:mediaId" element={<Details />} />
           <Route path="/tv/:mediaId" element={<Details />} />
 
-          {/* bookmarks & search  */}
+          {/* bookmarks route  */}
           <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/:mediaType/search/:searchQuery" element={<SearchResult />} />
 
           {/* profile routes  */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/login" element={<Login />} />
           <Route path="/profile/register" element={<Register />} />
 
+          {/* search routes  */}
+          <Route path="/:mediaType/search/:searchQuery" element={<SearchResult />} />
+
           {/* error routes */}
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>
+
+      {toast && <Toast />}
     </div>
   )
 }

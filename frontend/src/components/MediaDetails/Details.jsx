@@ -1,7 +1,9 @@
+// from installed packages 
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
+// from media Details 
 import Loading from '../CssComponents/Loading'
 import MediaRatings from "./MediaRatings";
 import MediaCast from "./MediaCast";
@@ -12,12 +14,13 @@ import MediaInfo from "./MediaInfo";
 import MediaHeading from "./MediaHeading";
 import MediaImage from "./MediaImage";
 
-// Base url 
-const tmdbActionUrl = 'http://localhost:8000/api';
-
+// Base url
+import baseUrl from '../../utils/baseUrl'
 
 // used for fetching movie & tv details 
 function Details() {
+
+    // instances 
     const navigate = useNavigate();
     const location = useLocation();
     const { mediaId } = useParams();
@@ -25,15 +28,16 @@ function Details() {
     const mediaType = location.pathname.split('/')[1];
     const [mediaDetail, setMediaDetail] = useState(null);
 
+    // fetching details of media according to mediaId 
     useEffect(() => {
         const fetchMediaDetail = async () => {
             try {
                 if (mediaId && mediaType) {
-                    const { data } = await axios.get(`${tmdbActionUrl}/media/${mediaType}/detail/${mediaId}`);
+                    const { data } = await axios.get(`${baseUrl}/media/${mediaType}/detail/${mediaId}`);
                     setMediaDetail(data.data);
                 }
             } catch (error) {
-                console.error("Error fetching media detail:", error);
+                // console.error("Error fetching media detail:", error);
             }
         };
         fetchMediaDetail();
@@ -46,14 +50,14 @@ function Details() {
             {/* button to back */}
             <button
                 onClick={() => navigate(`/${mediaType}`)}
-                className="mb-4 px-6 py-2 flex gap-3 items-center bg-darkRed text-lg font-semibold rounded-full duration-100"
+                className="px-6 py-3 mb-2 bg-red-700 text-white font-semibold rounded-xl hover:bg-red-600 transition duration-300"
             >
                 <span>Go Back</span>
             </button>
             {
                 mediaDetail ? (
-                    <div className=" flex flex-col sm:flex-row gap-8 justify-evenly">
-                        
+                    <div className=" flex flex-col sm:flex-row gap-8 justify-between">
+
                         {/* Render media image */}
                         <MediaImage mediaDetail={mediaDetail} />
 

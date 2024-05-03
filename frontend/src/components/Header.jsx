@@ -1,16 +1,17 @@
-// importing from packages 
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-
-// Importing icons 
+// importing from installed packages 
+import { useLocation, useNavigate, useParams } from "react-router-dom"; 
 import { AiFillAppstore } from "react-icons/ai";
 import { HiBookmark } from "react-icons/hi2";
 import { MdLocalMovies, MdMovie } from "react-icons/md";
 import { TbDeviceTvOld } from "react-icons/tb";
 
+// from custom files 
 import userImage from '../assets/userImage.jpg'
+
 
 // Header component
 const Header = () => {
+
     // Using react-router-dom hooks for navigation and getting current location
     const navigate = useNavigate();
     const { pathname } = useLocation();
@@ -19,10 +20,13 @@ const Header = () => {
     return (
         // Header container with responsive styling
         <div className="w-11/12 mx-auto sticky top-0 h-fit rounded-xl bg-deepBlue flex px-2 py-3 z-50 items-center justify-between lg:h-[99%] lg:w-[5%] lg:flex-col ">
+           
             {/* Movie icon */}
             <MdMovie className="p-1 text-darkRed text-3xl md:text-4xl ring-1 ring-darkRed rounded-full" />
+          
             {/* Navigation links */}
             <div className="flex lg:flex-col w-2/3 h-fit lg:h-2/3 items-center justify-center lg:justify-start text-xl md:text-2xl lg:text-3xl gap-6 lg:gap-8 ">
+              
                 {/* Home link */}
                 <AiFillAppstore
                     onClick={() => navigate("/")}
@@ -33,6 +37,7 @@ const Header = () => {
                             : "text-waikawaGrey")
                     }
                 />
+
                 {/* Movie link */}
                 <MdLocalMovies
                     onClick={() => navigate("/movie")}
@@ -43,6 +48,7 @@ const Header = () => {
                             : "text-waikawaGrey")
                     }
                 />
+
                 {/* TV link */}
                 <TbDeviceTvOld
                     onClick={() => navigate("/tv")}
@@ -53,6 +59,7 @@ const Header = () => {
                             : "text-waikawaGrey")
                     }
                 />
+
                 {/* Bookmarks link */}
                 <HiBookmark
                     onClick={() => navigate("/bookmarks")}
@@ -64,6 +71,7 @@ const Header = () => {
                     }
                 />
             </div>
+
             {/* profile button */}
             <button
                 onClick={() => navigate("/profile")}
@@ -75,9 +83,9 @@ const Header = () => {
                     alt="user Image"
                 />
             </button>
+
         </div>
     );
 };
 
 export default Header; 
-// Exporting Header component

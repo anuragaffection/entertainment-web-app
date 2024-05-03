@@ -1,5 +1,6 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
 
+// ratings fo single media 
 const MediaRatings = ({ mediaDetail }) => {
 	
 	// Array to store star elements

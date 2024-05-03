@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+// from installed packages
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 // importing media components 
@@ -8,19 +9,24 @@ import MediaBookmarked from './MediaBookmarked';
 import MediaInfo from './MediaInfo';
 import MediaPlay from './MediaPlay';
 
+// context 7 base url 
+import MyContext from '../../context/MyContext';
+import baseUrl from '../../utils/baseUrl'
 
+
+
+// media components 
 function Media({ mediaData }) {
-
+    const { isAuthenticated, setToast, setToastMessage } = useContext(MyContext)
     const [isHovered, setIsHovered] = useState(null)
     const [bookmarkedIds, setBookmarkedIds] = useState([]);
     const [bookmarkStatus, setBookmarkStatus] = useState(null)
-    
 
-
+    // fetching bookmark data to find id 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:8000/api/media/bookmark/get`, {
+                const { data } = await axios.get(`${baseUrl}/media/bookmark/get`, {
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -35,18 +41,22 @@ function Media({ mediaData }) {
     }, [bookmarkStatus]);
 
 
+    // deleting bookmark 
     const deleteBookmark = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/media/bookmark/delete/${id}`, {
+            await axios.delete(`${baseUrl}/media/bookmark/delete/${id}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
             });
             setBookmarkStatus(id)
-            window.alert("Deleted ")
+            setToast(true)
+            setToastMessage("Bookmark Deleted Successfully")
         } catch (error) {
-            window.alert("error in deleting ")
+            setToast(true)
+            setToastMessage("Error Happened")
+            // window.alert("error in deleting ")
             // console.error("Error in bookmark deleting :", error);
         }
     }
@@ -54,39 +64,49 @@ function Media({ mediaData }) {
 
     // adding bookmark
     const postData = async (singleMediaData) => {
-        try {
-            const { id, title, image, isAdult, mediaType, releaseDate } = singleMediaData;
 
-            await axios.post(`http://localhost:8000/api/media/bookmark/add`, {
-                id: id,
-                title: title,
-                image: image,
-                isAdult: isAdult,
-                mediaType: mediaType,
-                releaseDate: releaseDate,
-            }, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true,
-            });
+        if (isAuthenticated) {
 
-            setBookmarkStatus(id)
 
-            window.alert("Bookmark added ")
+            try {
+                // taking data from singleMediaData 
+                const { id, title, image, isAdult, mediaType, releaseDate } = singleMediaData;
 
-        } catch (error) {
-            window.alert("Error Adding")
-            // console.error("Error posting media data:", error);
+                await axios.post(`${baseUrl}/media/bookmark/add`, {
+                    id: id,
+                    title: title,
+                    image: image,
+                    isAdult: isAdult,
+                    mediaType: mediaType,
+                    releaseDate: releaseDate,
+                }, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    withCredentials: true,
+                });
+
+                setBookmarkStatus(id)
+                setToast(true)
+                setToastMessage("Bookmark added Successfully")
+                // window.alert("Bookmark added ")
+            } catch (error) {
+                setToast(true)
+                setToastMessage("Error Happened")
+                // window.alert("Error Adding")
+                // console.error("Error posting media data:", error);
+            }
+        } else {
+            setToast(true)
+            setToastMessage("No Account Found")
         }
     }
 
-
-
+    // render media
     return (
         <>
             {
-                mediaData.map((singleMediaData) => (
+                mediaData && mediaData.map((singleMediaData) => (
                     <div
                         key={singleMediaData.id}
                         className="flex flex-col gap-2"
@@ -106,15 +126,11 @@ function Media({ mediaData }) {
                                 // media bookmark 
                                 bookmarkedIds.includes(singleMediaData.id) ? (
                                     <MediaBookmarked
-                                        onClick={() => {
-                                            deleteBookmark(singleMediaData.id)
-                                        }}
+                                        onClick={() => { deleteBookmark(singleMediaData.id) }}
                                     />
                                 ) : (
                                     <MediaBookmark
-                                        onClick={() => {
-                                            postData(singleMediaData);
-                                        }}
+                                        onClick={() => { postData(singleMediaData); }}
                                     />
                                 )
                             }

@@ -1,16 +1,16 @@
+// importing installed packages
 import React from 'react';
+
+// importing custom files 
 import MediaRecommend from '../components/HomeMedia/MediaRecommend';
 import MediaTrending from '../components/HomeMedia/MediaTrending';
-import Movie from './Movie';
-import Tv from './Tv';
 
+// home page 
 function Home() {
     return (
         <>
             <MediaTrending />
             <MediaRecommend />
-            <Movie />
-            <Tv />
         </>
     )
 }

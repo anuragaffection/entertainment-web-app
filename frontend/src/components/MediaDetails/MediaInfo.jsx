@@ -1,5 +1,6 @@
 import React from 'react'
 
+// some extra details of single media
 function MediaInfo({ mediaDetail }) {
     return (
         <div className="flex gap-10 font-medium text-BodyS md:text-BodyM lg:text-HeadingXS" >

@@ -1,13 +1,12 @@
- import axios from 'axios'
-
-// base url 
-const tmdbActionUrl = 'http://localhost:8000/api'
+import axios from 'axios'
+import baseUrl from './baseUrl'
 
 // Fetch multiple media based on type, trending, movie, tv 
 const fetchMultiMedia = async (page, mediaType) => {
-    const { data } = await axios.get(`${tmdbActionUrl}/media/${mediaType}/${page}`);
+    const { data } = await axios.get(`${baseUrl}/media/${mediaType}/${page}`);
     return data.data;
 };
 
-// export 
+
 export default fetchMultiMedia;
+

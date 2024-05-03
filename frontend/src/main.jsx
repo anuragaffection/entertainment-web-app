@@ -7,6 +7,7 @@ import App from './App.jsx'
 
 const queryClient = new QueryClient();
 
+// Routing, context, query wrapper 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

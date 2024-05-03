@@ -1,12 +1,13 @@
+// from installed packages 
+import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios';
 import { MdMovie } from "react-icons/md";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import MyContext from '../../context/MyContext';
 
-const baseUrl = 'http://localhost:8000/api'
+// from custom files 
+import MyContext from '../../context/MyContext';
+import baseUrl from '../../utils/baseUrl'
+
 
 function Login() {
     const myState = useContext(MyContext);
@@ -29,38 +30,17 @@ function Login() {
                 withCredentials: true,
             });
 
-            console.log(api.data.message)
-
-            toast.success(api.data.message, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-
+            myState.setToast(true);
+            myState.setToastMessage(api.data.message)
             myState.setIsAuthenticated(true);
 
             setTimeout(() => {
                 navigate('/')
             }, 1000);
 
-
         } catch (error) {
-            toast.error(error.response.data.message, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-
+            myState.setToast(true);
+            myState.setToastMessage(error.response.data.message)
             myState.setIsAuthenticated(false);
         }
     }
@@ -78,19 +58,6 @@ function Login() {
 
     return (
         <>
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
-
             <div className={container}>
                 <div className={wrapper}>
                     <MdMovie className="text-darkRed text-center text-5xl md:text-6xl" />

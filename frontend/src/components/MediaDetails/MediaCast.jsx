@@ -1,5 +1,6 @@
 import React from 'react'
 
+//cast details of singleMedia
 function MediaCast({ mediaDetail }) {
     return (
         <div className="w-full flex flex-col gap-2">

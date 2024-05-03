@@ -1,58 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import baseUrl from '../../utils/baseUrl';
 
-const tmdbActionUrl = 'http://localhost:8000/api'
-
-
-// fetching media images 
-const useFetchMediaImage = async (movieId, setMediaImage, mediaType) => {
-    try {
-        const data = await axios.get(`${tmdbActionUrl}/media/${mediaType}/image/${movieId}`);
-        setMediaImage(data.data.imagePath);
-    } catch (error) {
-        // console.error("Error fetching multi-media:", error);
-    }
-};
-
-
-// media card 
-function MediaCard({ singleMediaData,  mediaType }) {
-
-    const fetchImage = useFetchMediaImage;
+// Media image
+function MediaImage({ singleMediaData, mediaType }) {
     const [mediaImage, setMediaImage] = useState(null);
 
-    // fecthing image 
+    // fetch extra high quality image 
     useEffect(() => {
-        setTimeout(() => {
-            fetchImage(singleMediaData.id, setMediaImage, mediaType);
+        let isMounted = true;
+        const fetchImage = async () => {
+            try {
+                const { data } = await axios.get(`${baseUrl}/media/${mediaType}/image/${singleMediaData.id}`);
+                if (isMounted) {
+                    setMediaImage(data.imagePath);
+                }
+            } catch (error) {
+                // console.error("Error fetching multi-media:", error);
+                setMediaImage(null);
+            }
+        };
+        const timer = setTimeout(() => {
+            fetchImage();
         }, 2000);
-    }, [fetchImage]);
+        return () => {
+            clearTimeout(timer);
+            isMounted = false;
+        };
+    }, [singleMediaData.id, mediaType]);
 
+    // render image 
     return (
-        <>
-            {
-                mediaImage ? (
+        <div className="w-full h-24 sm:h-32 rounded-lg">
+            {mediaImage ? (
+                <img
+                    src={`https://image.tmdb.org/t/p/w500/${mediaImage}`}
+                    className="w-full h-full rounded-lg"
+                    alt="img"
+                />
+            ) : (
+                singleMediaData.image ? (
                     <img
-                        src={`https://image.tmdb.org/t/p/w500/${mediaImage}`}
-                        className="w-full h-24 sm:h-32 rounded-lg"
+                        src={`https://image.tmdb.org/t/p/w500/${singleMediaData.image}`}
+                        className="w-full h-full rounded-lg"
                         alt="img"
                     />
                 ) : (
-                    singleMediaData.image ? (
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500/${singleMediaData.image}`}
-                            className="w-full h-24 sm:h-32 rounded-lg"
-                            alt="img"
-                        />
-                    ) : (
-                        <div className='w-full h-24 sm:h-32 rounded-xl bg-black flex justify-center items-center'>
-                            <span>No Image Preview</span>
-                        </div>
-                    )
+                    <div className='w-full h-full rounded-xl bg-black flex justify-center items-center'>
+                        <span>No Image Preview</span>
+                    </div>
                 )
-            }
-        </>
-    )
+            )}
+        </div>
+    );
 }
 
-export default MediaCard
+export default MediaImage;
