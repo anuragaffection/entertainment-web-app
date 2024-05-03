@@ -21,8 +21,7 @@ function MediaCard({ singleMediaData,  mediaType }) {
     const fetchImage = useFetchMediaImage;
     const [mediaImage, setMediaImage] = useState(null);
 
-    // Fetch movie data when component mounts
-    // we can change the page 
+    // fecthing image 
     useEffect(() => {
         setTimeout(() => {
             fetchImage(singleMediaData.id, setMediaImage, mediaType);

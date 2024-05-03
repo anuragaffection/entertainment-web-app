@@ -14,7 +14,7 @@ import Error404 from './components/Error404'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import SearchResult from './components/SearchResult'
-import MediaDetails from './components/MediaComponents/MediaDetails'
+import Details from './components/MediaDetails/Details'
 
 // importing auth components 
 import Login from "./components/AuthComponents/Login"
@@ -49,9 +49,9 @@ function App() {
 
           {/* movies & tv routes  */}
           <Route path="/movie" element={<Movie />} />
-          <Route path="/movie/:mediaId" element={<MediaDetails />} />
+          <Route path="/movie/:mediaId" element={<Details />} />
           <Route path="/tv" element={<Tv />} />
-          <Route path="/tv/:mediaId" element={<MediaDetails />} />
+          <Route path="/tv/:mediaId" element={<Details />} />
 
           {/* bookmarks & search  */}
           <Route path="/bookmarks" element={<Bookmarks />} />

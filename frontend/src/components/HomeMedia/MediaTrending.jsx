@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 
-import Loading from '../CssComponents/Loading';
+import { DNA } from "react-loader-spinner";
 import Media from '../MediaComponents/Media';
 import fetchMultiMedia from '../../utils/fetchMultiMedia';
 
@@ -17,7 +17,7 @@ function MediaTrending() {
 
 
     // render loading or error 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <DNA height={50} width={50} />;
     if (isError) return <div>Error fetching data</div>;
 
     return (

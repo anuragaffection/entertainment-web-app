@@ -13,6 +13,8 @@ function Media({ mediaData }) {
 
     const [isHovered, setIsHovered] = useState(null)
     const [bookmarkedIds, setBookmarkedIds] = useState([]);
+    const [bookmarkStatus, setBookmarkStatus] = useState(null)
+    
 
 
     useEffect(() => {
@@ -30,7 +32,54 @@ function Media({ mediaData }) {
             }
         }
         fetchData();
-    }, []);
+    }, [bookmarkStatus]);
+
+
+    const deleteBookmark = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/media/bookmark/delete/${id}`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true,
+            });
+            setBookmarkStatus(id)
+            window.alert("Deleted ")
+        } catch (error) {
+            window.alert("error in deleting ")
+            // console.error("Error in bookmark deleting :", error);
+        }
+    }
+
+
+    // adding bookmark
+    const postData = async (singleMediaData) => {
+        try {
+            const { id, title, image, isAdult, mediaType, releaseDate } = singleMediaData;
+
+            await axios.post(`http://localhost:8000/api/media/bookmark/add`, {
+                id: id,
+                title: title,
+                image: image,
+                isAdult: isAdult,
+                mediaType: mediaType,
+                releaseDate: releaseDate,
+            }, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true,
+            });
+
+            setBookmarkStatus(id)
+
+            window.alert("Bookmark added ")
+
+        } catch (error) {
+            window.alert("Error Adding")
+            // console.error("Error posting media data:", error);
+        }
+    }
 
 
 
@@ -52,13 +101,21 @@ function Media({ mediaData }) {
                                 singleMediaData={singleMediaData}
                                 mediaType={"Movie"}
                             />
-                        
+
                             {
                                 // media bookmark 
                                 bookmarkedIds.includes(singleMediaData.id) ? (
-                                    <MediaBookmarked singleMediaData={singleMediaData} />
+                                    <MediaBookmarked
+                                        onClick={() => {
+                                            deleteBookmark(singleMediaData.id)
+                                        }}
+                                    />
                                 ) : (
-                                    <MediaBookmark singleMediaData={singleMediaData} />
+                                    <MediaBookmark
+                                        onClick={() => {
+                                            postData(singleMediaData);
+                                        }}
+                                    />
                                 )
                             }
 
