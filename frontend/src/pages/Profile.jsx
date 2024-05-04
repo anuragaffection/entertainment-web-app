@@ -28,8 +28,6 @@ function Profile() {
                 myState.setUser(api.data.user)
             }
             fetchUser();
-        } else {
-            myState.setUser({})
         }
     }, [isAuthenticated])
 
