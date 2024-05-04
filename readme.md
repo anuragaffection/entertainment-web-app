@@ -2,18 +2,15 @@
 
 The Entertainment App is a full-stack application designed to provide users with access to a vast collection of movies and TV shows, leveraging the TMDB API for fetching media details. It features user authentication, media exploration, and personal bookmarks, offering a comprehensive and personalized media browsing experience.
 
-
 ## Deployment
 
-- **Frontend:** [Entertainment App Frontend](https://entertainment-app-frontend-110.onrender.com)
-- **Backend:** [Entertainment App Backend](https://entertainment-app-backend-110.onrender.com)
+- **Frontend:** :- https://entertainment-app-anurag-affection.vercel.app/
+- **Backend:** :- https://entertainment-web-app-0aqb.onrender.com/
 
+## Important Links
 
-
-## Important Links 
-- API Documentation : 
-- Database Design :  
-
+- API Documentation :
+- Database Design :
 
 ## Features
 
@@ -71,12 +68,43 @@ The Entertainment App is a full-stack application designed to provide users with
 
 ### Backend Project Structure
 
-- **Controllers:** Contains logic for handling API requests, such as `DetailMediaController.js` for fetching detailed media information.
-- **Models:** Defines the schema for database collections, including Users and Bookmarks.
+- **Constant:** Contains TMDB api end points
+- **Controllers:** Contains logic for handling API requests.
+- **Middleware:** Includes middleware for authentication.
+- **Models:** Defines the schema for database collections.
 - **Routes:** API routes for handling requests to different endpoints.
-- **Middleware:** Includes middleware for authentication and error handling.
-- **Utils:** Helper functions for interacting with external APIs (`fetchDataUtils.js`) and customizing media response data (`customizeMediaResponse.js`).
+- **Utils:** Containers Helper Function to fetch media & to generate cookie.
 
+<pre>
+|-- src
+    |-- constants 
+        |-- media.constant.js
+    |-- controllers
+        |-- bookmark.controllers.js 
+        |-- media.controllers.js 
+        |-- mediaDetail.controllers.js 
+        |-- mediaImage.controllers.js 
+        |-- mediaSearch.controllers.js 
+        |-- user.controller.js
+    |-- middleware
+        |-- auth.js 
+    |-- models 
+        |-- bookmark.models.js 
+        |-- user.models.js 
+    |-- routes 
+        |-- bookmark.routes.js 
+        |-- media.routes.js 
+        |-- user.routes.js 
+    |-- utils
+        |-- media.utils.js 
+        |-- user.utils.js 
+    |-- app.js 
+|-- .env
+|-- .gitignore
+|-- index.js
+|-- package.json
+|-- package-lock.json
+</pre>
 
 ## Getting Started For Frontend
 
@@ -112,14 +140,72 @@ The Entertainment App is a full-stack application designed to provide users with
 5. **Access the Application:** Open your web browser and navigate to the specified URL (default: http://localhost:PORT) to access the Entertainment App.
 
 ### Frontend Project Structure
+- **Assets:** Contains dummy image .
+- **Components:** Reusable components code .
+- **Context:** State mangement accross applicaton for authenticatin & bookmark.
+- **Pages:** Five main pages, Home, Movie, Tv, Bookmark, Profile.
+- **Utils:** Contains baseUrl of api & functin to fetch media 
 
-- **Components:** Reusable UI components like `SingleCard` for displaying media information.
-- **Pages:** React components representing pages (`Home.jsx`, `Login.jsx`, `SignUp.jsx`, `MovieDetail.jsx`, and `TvDetail.jsx`), utilizing hooks like `useParams` and services (`TmdbService.js`) for fetching media details.
-- **Services:** Functions for making API requests, including user authentication (`UserService.js`) and media data fetching (`TmdbService.js`).
-- **Store:** Redux setup for state management, including slices like `BookmarkSlice.js` for managing bookmarks.
-- **Utils:** Utility functions such as `cookieActionUtils.js` for managing cookies and `customToast.js` for displaying toast notifications.
-
-
+<pre>
+|-- src
+    |-- assets 
+    |-- components
+        |-- AuthComponents 
+            |-- Login.jsx 
+            |-- Logout.jsx 
+            |-- Register.jsx 
+        |-- CssComponents
+            |-- Loading.jsx
+            |-- Toast.jsx
+        |-- HomeMedia
+            |-- MediaRecommend.jsx
+            |-- MediaTrending.jsx
+        |-- MediaComponents
+            |-- Media.jsx
+            |-- MediaBookmark.jsx
+            |-- MediaBookmarked.jsx 
+            |-- MediaImage.jsx
+            |-- MediaInfo.jsx
+            |-- MediaPlay.jsx
+        |-- MediaDetails
+            |-- Details.jsx
+            |-- MediaCast.jsx
+            |-- MediaGenre.jsx 
+            |-- MediaHeading.jsx
+            |-- MediaImage.jsx
+            |-- MediaInfo.jsx
+            |-- MediaLink.jsx
+            |-- MediaRatings.jsx
+            |-- MediaSynopsis.jsx
+        |-- Error404.jsx
+        |-- Header.jsx
+        |-- MoreMedia.jsx
+        |-- SearchBar.jsx
+        |-- SearchResult.jsx
+    |-- context
+        |-- MyContext.js
+        |-- MyState.js  
+    |-- pages
+        |-- Bookmarks.jsx 
+        |-- Home.jsx 
+        |-- Movie.jsx 
+        |-- Profile.jsx 
+        |-- Tv.jsx  
+    |-- utils 
+        |-- baseUrl.js 
+        |-- fetchMultiMedia.js
+    |-- App.jsx 
+    |-- main.jsx 
+|-- .eslintrc.cjs
+|--.gitignore
+|-- index.css 
+|-- index.html
+|-- package.json
+|-- package-lock.json
+|-- postcss.config.js
+|-- tailwind.cofig.js
+|-- vite.config.js 
+</pre>
 
 
 ## Contributing
