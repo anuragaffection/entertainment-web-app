@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 // from custom files 
 import MyContext from '../../context/MyContext';
-const baseUrl = 'http://localhost:8000/api'
+import baseUrl from '../../utils/baseUrl'
+
 
 // logout components 
 function Logout() {
