@@ -17,21 +17,23 @@ function Bookmarks() {
 
     // bookmark media data fetching 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get(`${baseUrl}/media/bookmark/get`, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    withCredentials: true,
-                });
-                setMediaData(data.data);
-            } catch (error) {
-                // console.error("Error fetching media data:", error);
+        if (isAuthenticated) {
+            const fetchData = async () => {
+                try {
+                    const { data } = await axios.get(`${baseUrl}/media/bookmark/get`, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        withCredentials: true,
+                    });
+                    setMediaData(data.data);
+                } catch (error) {
+                    // console.error("Error fetching media data:", error);
+                }
             }
+            fetchData();
         }
-        fetchData();
-    }, []);
+    }, [isAuthenticated]);
 
 
     // css style 
@@ -59,13 +61,13 @@ function Bookmarks() {
                         )
                     }
                 </> : <>
-                    <div className='flex flex-col gap-4'> 
+                    <div className='flex flex-col gap-4'>
                         <div>No Account Found </div>
                         <Link
                             to="/profile"
                             className="px-6 py-3 w-32 text-center bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300"
                         >
-                            Visit Here 
+                            Visit Here
                         </Link>
                     </div>
                 </>

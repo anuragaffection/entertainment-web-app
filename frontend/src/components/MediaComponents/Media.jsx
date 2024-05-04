@@ -24,21 +24,23 @@ function Media({ mediaData }) {
 
     // fetching bookmark data to find id 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get(`${baseUrl}/media/bookmark/get`, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    withCredentials: true,
-                });
-                setBookmarkedIds(data.data.map((bookmark) => bookmark.id));
-            } catch (error) {
-                console.error("Error fetching media data:", error);
+        if (isAuthenticated) {
+            const fetchData = async () => {
+                try {
+                    const { data } = await axios.get(`${baseUrl}/media/bookmark/get`, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        withCredentials: true,
+                    });
+                    setBookmarkedIds(data.data.map((bookmark) => bookmark.id));
+                } catch (error) {
+                    // console.error("Error fetching media data:", error);
+                }
             }
+            fetchData();
         }
-        fetchData();
-    }, [bookmarkStatus]);
+    }, [bookmarkStatus, isAuthenticated]);
 
 
     // deleting bookmark 
@@ -66,8 +68,6 @@ function Media({ mediaData }) {
     const postData = async (singleMediaData) => {
 
         if (isAuthenticated) {
-
-
             try {
                 // taking data from singleMediaData 
                 const { id, title, image, isAdult, mediaType, releaseDate } = singleMediaData;
