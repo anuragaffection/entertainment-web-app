@@ -78,7 +78,7 @@ const Header = () => {
             {/* profile button */}
             <button
                 onClick={() => navigate("/profile")}
-                className="h-fit w-fit ring-darkRed ring-1 rounded-full p-1">
+                className="h-fit w-fit ring-darkRed ring-1 rounded-full">
                 {/* User profile image */}
                 {
                     isAuthenticated ? <img
