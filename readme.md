@@ -9,8 +9,8 @@ The Entertainment App is a full-stack application designed to provide users with
 
 ## Important Links
 
-- API Documentation :
-- Database Design :
+- API Documentation : https://documenter.getpostman.com/view/30096390/2sA3JGeicf
+- Database Design : 
 
 ## Features
 
@@ -19,7 +19,7 @@ The Entertainment App is a full-stack application designed to provide users with
 - **Bookmarks:** Enables users to bookmark their favorite media, creating a personalized list of favorites accessible at any time.
 - **Detailed Media Information:** Provides in-depth details about movies and TV shows, including cast, genres, ratings, and more.
 
-### Prerequisites
+## Prerequisites
 
 - Node.js (v14 or later)
 - npm (v6 or later)
@@ -128,23 +128,21 @@ The Entertainment App is a full-stack application designed to provide users with
    const baseUrl = "Enter Your own backend api endpoints",
    ```
 
-   eg.
-   const baseUrl = "https://entertainment-web-app-0aqb.onrender.com/api",
-
 4. **Start the Application:** Run the frontend application.
 
    ```sh
    npm run dev
    ```
 
-5. **Access the Application:** Open your web browser and navigate to the specified URL (default: http://localhost:PORT) to access the Entertainment App.
+5. **Access the Application:** Open your web browser and navigate to the specified URL (default: http://localhost:5173) to access the Entertainment App.
 
 ### Frontend Project Structure
+
 - **Assets:** Contains dummy image .
 - **Components:** Reusable components code .
 - **Context:** State mangement accross applicaton for authenticatin & bookmark.
 - **Pages:** Five main pages, Home, Movie, Tv, Bookmark, Profile.
-- **Utils:** Contains baseUrl of api & functin to fetch media 
+- **Utils:** Contains baseUrl of api & function to fetch media
 
 <pre>
 |-- src
@@ -206,7 +204,6 @@ The Entertainment App is a full-stack application designed to provide users with
 |-- tailwind.cofig.js
 |-- vite.config.js 
 </pre>
-
 
 ## Contributing
 
