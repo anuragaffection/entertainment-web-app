@@ -14,8 +14,9 @@ import Logout from '../components/AuthComponents/Logout'
 function Profile() {
     const myState = useContext(MyContext);
 
-    if (myState.isAuthenticated) {
-        useEffect(() => {
+
+    useEffect(() => {
+        if (myState.isAuthenticated) {
             const fetchUser = async () => {
                 const api = await axios.get(`${baseUrl}/user/profile`, {
                     headers: {
@@ -27,10 +28,11 @@ function Profile() {
                 myState.setUser(api.data.user)
             }
             fetchUser();
-        }, [])
-    } else {
-        myState.setUser({})
-    }
+        } else {
+            myState.setUser({})
+        }
+    }, [isAuthenticated])
+
 
 
     return (
