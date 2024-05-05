@@ -10,7 +10,7 @@ The Entertainment App is a full-stack application designed to provide users with
 ## Important Links
 
 - API Documentation : https://documenter.getpostman.com/view/30096390/2sA3JGeicf
-- Video Explanation: 
+- Video Explanation: https://youtu.be/r7oX1R0dADk
 - Database Design: [Google Docs Link](https://docs.google.com/document/d/1hbnF4K5TD7rX6tV_f1QHFxl1lUa7iwCuzthboU_MwQM/edit?usp=sharing)
 - Best Practices : [Google Docs Link](https://docs.google.com/document/d/1KuIXsouPjAgOUs59XOcKuDiKuu74_20GStGO6DTDx6g/edit?usp=sharing)
 
@@ -68,6 +68,17 @@ The Entertainment App is a full-stack application designed to provide users with
     ```
 
 6.  **Verify Backend Setup:** Confirm that the backend server is running without any errors.
+
+### Backned Technologies
+- Node js 
+- Express js
+- jsonwebtoken
+- bcrypt
+- MongoDB 
+- Mongoose 
+- dotenv
+- cors
+- cookie-parser
 
 ### Backend Project Structure
 
@@ -138,6 +149,20 @@ The Entertainment App is a full-stack application designed to provide users with
    ```
 
 5. **Access the Application:** Open your web browser and navigate to the specified URL (default: http://localhost:5173) to access the Entertainment App.
+
+### Frontend Technologies 
+
+- Vite
+- Npm
+- HTML
+- CSS
+- Tailwind CSS
+- React.js
+- React Query
+- Javascript
+- Context API
+- React hook form
+- React Loader Spinner
 
 ### Frontend Project Structure
 
