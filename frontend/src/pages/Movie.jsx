@@ -34,7 +34,7 @@ const Movie = () => {
             }
             <button
                 onClick={fetchNextPage}
-                className="px-6 py-3 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300">
+                className="px-6 py-3 mb-10 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300">
                 Load More
             </button>
         </div>
