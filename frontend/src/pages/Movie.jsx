@@ -1,6 +1,6 @@
 // importing from installed packages 
-import React, { useState, Suspense } from "react";
-const MoreMedia = React.lazy(() => import('../components/MoreMedia'));
+import React, { useState, Suspense, lazy } from "react";
+const MoreMedia = lazy(() => import('../components/MoreMedia'));
 // import MoreMedia from "../components/MoreMedia";
 
 // i am doing lazy important to improve peformance
