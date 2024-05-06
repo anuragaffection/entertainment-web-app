@@ -1,7 +1,10 @@
 // importing from installed packages 
-import React, { useState } from "react";
-import MoreMedia from "../components/MoreMedia";
+import React, { useState, Suspense } from "react";
+const MoreMedia = React.lazy(() => import('../components/MoreMedia'));
+// import MoreMedia from "../components/MoreMedia";
 
+// i am doing lazy important to improve peformance
+// suspense is a part of lazy laodings
 
 // movie page
 const Movie = () => {
@@ -23,15 +26,18 @@ const Movie = () => {
     return (
         <div className={containerStyle}>
             <h1 className={headingStyle}>Explore Movie</h1>
-            {
-                pageNumbers.map((currentPage, index) => (
-                    <MoreMedia
-                        key={index}
-                        currentPage={currentPage}
-                        mediaType={"movie"}
-                    />
-                ))
-            }
+
+            <Suspense fallback={<div>Loading...</div>}>
+                {
+                    pageNumbers.map((currentPage, index) => (
+                        <MoreMedia
+                            key={index}
+                            currentPage={currentPage}
+                            mediaType={"movie"}
+                        />
+                    ))
+                }
+            </Suspense>
             <button
                 onClick={fetchNextPage}
                 className="px-6 py-3 mb-10 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300">
