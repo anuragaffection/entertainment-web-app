@@ -5,8 +5,7 @@ import Media from '../MediaComponents/Media'
 function FallbackMedia() {
 
     const mediaData = fallbackData.data;
-
-    const wrapperStyle = "flex sm:grid grid-rows-1 grid-flow-col overflow-x-scroll gap-5 lg:gap-7 scrollbar-corner-transparent scrollbar scrollbar-thumb-darkRed scrollbar-track-transparent"
+    const wrapperStyle = "grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
 
     return (
         <>
