@@ -1,7 +1,7 @@
 // from installed packages 
 import React from 'react';
 import { useQuery } from 'react-query';
-import { DNA } from "react-loader-spinner";
+import FallbackMedia from '../FallbackComponents/FallbackMedia'
 
 // from custom files 
 import Media from '../MediaComponents/Media';
@@ -19,7 +19,7 @@ function MediaTrending() {
 
 
     // render loading or error 
-    if (isLoading) return <DNA height={50} width={50} />;
+    if (isLoading) return <FallbackMedia />;
     if (isError) return <div>Error fetching data</div>;
 
     // css style 

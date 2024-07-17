@@ -1,10 +1,10 @@
 // importing from installed packages 
 import React from "react";
 import { useQuery } from 'react-query';
-import { DNA } from "react-loader-spinner";
 
 import Media from "./MediaComponents/Media";
 import fetchMultiMedia from "../utils/fetchMultiMedia";
+import FallbackMedia from "./FallbackComponents/FallbackMedia";
 
 
 function MoreMedia({ currentPage, mediaType }) {
@@ -17,7 +17,7 @@ function MoreMedia({ currentPage, mediaType }) {
     } = useQuery([currentPage, mediaType], () => fetchMultiMedia(currentPage, mediaType));
 
     // render loading or error 
-    if (isLoading) return <DNA height={50} width={50} />;
+    if (isLoading) return <FallbackMedia />;
     if (isError) return <div>Error fetching data</div>;
 
     // css style 
