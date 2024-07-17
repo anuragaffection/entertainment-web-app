@@ -18,7 +18,7 @@ function MoreMedia({ currentPage, mediaType }) {
 
     // render loading or error 
     if (isLoading) return <FallbackMedia />;
-    if (isError) return <div>Error fetching data</div>;
+    if (isError) return <FallbackMedia />;
 
     // css style 
     const wrapperStyle = "grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"

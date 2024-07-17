@@ -7,8 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // darkRed: "#FC4747",
-        darkRed: rgb(34, 211, 238),
+        darkRed: "#FC4747",
         white: "#FFFFFF",
         waikawaGrey: "#5A698F",
         deepBlue: "#161D2F",
