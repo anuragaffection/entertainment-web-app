@@ -35,10 +35,10 @@ export default function NavbarMenu() {
             link: 'https://anuragaffection.vercel.app/'
         },
         {
-            name: 'Entertainment App',
-            shortName: 'Entertain...',
+            name: 'Resume Builder',
+            shortName: 'Resume...',
             image: userLogo,
-            link: 'https://entertainment-app-anurag-affection.vercel.app/'
+            link: 'https://resume-builder-anurag.vercel.app/'
         },
     ];
 
