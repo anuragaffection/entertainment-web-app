@@ -57,13 +57,13 @@ function Register() {
     const labelInputWrapper = 'flex flex-col gap-1'
     const labelStyle = 'font-semibold ml-2'
     const inputStyle = `bg-gray-700 h-12 p-3 rounded-lg`;
-    const submitButton = `text-lg font-semibold h-12 rounded-lg bg-darkRed`
+    const submitButton = `text-lg font-semibold h-12 rounded-lg bg-cyan-500`
 
     return (
         <>
             <div className={container}>
                 <div className={wrapper}>
-                    <MdMovie className="text-darkRed text-center text-5xl md:text-6xl" />
+                    <MdMovie className="text-cyan-500 text-center text-5xl md:text-6xl" />
                     <h1 className={title}>Register Here   </h1>
                     <form onSubmit={handleSubmit} className={registerForm}>
 
@@ -111,7 +111,7 @@ function Register() {
 
                         <button type="submit" className={submitButton}>Submit</button>
                     </form>
-                    <div className='hover:text-darkRed'>
+                    <div className='hover:text-cyan-500'>
                         <Link to={'/profile'}>Already Have Account? Login here.</Link>
                     </div>
 
