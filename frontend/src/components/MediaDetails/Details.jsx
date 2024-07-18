@@ -50,7 +50,7 @@ function Details() {
             {/* button to back */}
             <button
                 onClick={() => navigate(`/${mediaType}`)}
-                className="px-6 py-3 mb-2 bg-red-700 text-white font-semibold rounded-xl hover:bg-red-600 transition duration-300"
+                className="px-6 py-3 mb-2 bg-cyan-500 text-black font-semibold rounded-xl hover:bg-cyan-400 transition duration-300"
             >
                 <span>Go Back</span>
             </button>

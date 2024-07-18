@@ -15,9 +15,9 @@ const Toast = () => {
 
     return (
         <div
-            className={`fixed z-50 top-5 right-5 bg-darkRed bg-opacity-90 rounded-lg px-4 py-2 ${toast ? 'block' : 'hidden'}`}
+            className={`fixed z-50 top-5 right-5 bg-cyan-500 bg-opacity-90 rounded-lg px-4 py-2 ${toast ? 'block' : 'hidden'}`}
         >
-            <p className="text-white">{toastMessage}</p>
+            <p className="text-black">{toastMessage}</p>
         </div>
     );
 };
