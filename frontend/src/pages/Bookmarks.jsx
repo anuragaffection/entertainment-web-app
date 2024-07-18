@@ -65,7 +65,7 @@ function Bookmarks() {
                         <div>No Account Found </div>
                         <Link
                             to="/profile"
-                            className="px-6 py-3 w-32 text-center bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300"
+                            className="px-6 py-3 w-32 text-center bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition duration-300"
                         >
                             Visit Here
                         </Link>
