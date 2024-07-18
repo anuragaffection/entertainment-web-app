@@ -57,7 +57,7 @@ function Register() {
     const labelInputWrapper = 'flex flex-col gap-1'
     const labelStyle = 'font-semibold ml-2'
     const inputStyle = `bg-gray-700 h-12 p-3 rounded-lg`;
-    const submitButton = `text-lg font-semibold h-12 rounded-lg bg-cyan-500`
+    const submitButton = `text-lg text-black font-semibold h-12 rounded-lg bg-cyan-500`
 
     return (
         <>

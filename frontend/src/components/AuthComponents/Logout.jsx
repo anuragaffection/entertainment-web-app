@@ -47,7 +47,7 @@ function Logout() {
                 onClick={logout}
                 className="mb-4 px-6 py-2 flex gap-3 items-center bg-cyan-500 text-lg font-semibold rounded-full duration-100"
             >
-                <span>Logout</span>
+                <span className='text-black'>Logout</span>
             </button>
         </>
     )
