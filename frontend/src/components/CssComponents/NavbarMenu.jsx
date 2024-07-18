@@ -1,42 +1,40 @@
-
-
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AppsIcon from '@mui/icons-material/Apps';
-import { Button, Tooltip, Box } from '@mui/material';
-
-import userLogo from '../../assets/userLogo.jpg'
+import { Button, Box } from '@mui/material';
+import userLogo from '../../assets/userLogo.jpg';
 
 export default function NavbarMenu() {
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = useState(null);
 
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
 
     const items = [
         {
-            name: "Code Book",
-            shortName: 'Code',
+            name: "Code",
+            lastName: "Book",
             image: userLogo,
             link: 'https://github.com/anuragaffection/FullStackNotes'
         },
         {
-            name: 'Anurag Affection',
-            shortName: "Anurag",
+            name: 'Anurag',
+            lastName: "Affection",
             image: userLogo,
             link: 'https://anuragaffection.vercel.app/'
         },
         {
-            name: 'Resume Builder',
-            shortName: 'Resume...',
+            name: 'Resume',
+            lastName: 'Builder',
             image: userLogo,
             link: 'https://resume-builder-anurag.vercel.app/'
         },
@@ -50,14 +48,13 @@ export default function NavbarMenu() {
                     backgroundColor: '#161D2F',
                     '&:hover': {
                         color: '#06b6d4',
-
                     },
                 }}
                 aria-label='more'
                 aria-controls='long_menu'
                 aria-expanded='true'
                 aria-haspopup="true"
-                onClick={(e) => handleClick(e)}
+                onClick={handleClick}
             >
                 <AppsIcon sx={{ fontSize: '36px' }} />
             </IconButton>
@@ -91,47 +88,55 @@ export default function NavbarMenu() {
                         >
                             <a
                                 href={item.link}
+
                                 style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
-                                    width: '100%'
+                                    width: '100%',
                                 }}
                             >
-                                <Tooltip title={item.name} arrow placement='top'>
-                                    <Button
-                                        variant={'text'}
-                                        sx={{
-                                            width: '100%',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
+                                <Button
+                                    variant={'text'}
+                                    sx={{
+                                        width: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        '&:hover': {
+                                            color: '#000000',
+                                            backgroundColor: '#06b6d4',
+                                        },
+                                    }}
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        style={{ width: '24px', height: '24px', marginRight: '8px' }}
+                                    />
+                                    <span
+                                        style={{
+                                            maxWidth: '80px',
+                                            textAlign: 'center',
+                                            textTransform: 'capitalize'
                                         }}
                                     >
-                                        <img
-                                            src={item.image}
-                                            alt={item.shortName}
-                                            style={{ width: '24px', height: '24px', marginRight: '8px' }}
-                                        />
-                                        <span
-                                            style={{
-                                                maxWidth: '80px',
-                                                overflow: 'hidden',
-                                                whiteSpace: 'nowrap',
-                                                textOverflow: 'ellipsis',
-                                            }}
-                                        >
-                                            {item.name.length > 5 ? `${item.name.slice(0, 5)}...` : item.name}
-                                        </span>
-                                    </Button>
-                                </Tooltip>
+                                        {item.name}
+                                    </span>
+                                    <span
+                                        style={{
+                                            maxWidth: '80px',
+                                            textAlign: 'center',
+                                            textTransform: 'capitalize'
+                                        }}
+                                    >
+                                        {item.lastName}
+                                    </span>
+                                </Button>
                             </a>
                         </MenuItem>
                     ))}
                 </Box>
-            </Menu>
-        </Box>
+            </Menu >
+        </Box >
     );
 }
-
-// ReactDOM.render(<NavbarMenu />, document.getElementById('root'));
-
