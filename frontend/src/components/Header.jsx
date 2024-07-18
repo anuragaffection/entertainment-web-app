@@ -6,10 +6,12 @@ import { HiBookmark } from "react-icons/hi2";
 import { MdLocalMovies, MdMovie } from "react-icons/md";
 import { TbDeviceTvOld } from "react-icons/tb";
 
+
 // from custom files 
 import userImage from '../assets/userImage.jpg'
 import userLogo from '../assets/userLogo.jpg'
 import MyContext from '../context/MyContext'
+import NavbarMenu from "./CssComponents/NavbarMenu.jsx";
 
 // Header component
 const Header = () => {
@@ -25,7 +27,11 @@ const Header = () => {
         <div className="w-11/12 mx-auto sticky top-0 h-fit rounded-xl bg-deepBlue flex px-2 py-3 z-50 items-center justify-between lg:h-[99%] lg:w-[5%] lg:flex-col ">
 
             {/* Movie icon */}
-            <MdMovie className="p-1 text-cyan-500 text-3xl md:text-4xl ring-1 ring-cyan-500 rounded-full" />
+            {/* <MdMovie className="p-1 text-cyan-500 text-3xl md:text-4xl ring-1 ring-cyan-500 rounded-full" /> */}
+
+            <NavbarMenu />
+
+
 
             {/* Navigation links */}
             <div className="flex lg:flex-col w-2/3 h-fit lg:h-2/3 items-center justify-center lg:justify-start text-xl md:text-2xl lg:text-3xl gap-6 lg:gap-8 ">
