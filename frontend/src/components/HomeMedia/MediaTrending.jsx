@@ -25,7 +25,7 @@ function MediaTrending() {
     // css style 
     const containerStyle = "p-4 mt-2 flex flex-col gap-6";
     const headingStyle = "text-2xl md:text-4xl font-bold";
-    const wrapperStyle = "flex sm:grid grid-rows-1 grid-flow-col overflow-x-scroll gap-5 lg:gap-7 scrollbar-corner-transparent scrollbar scrollbar-thumb-darkRed scrollbar-track-transparent"
+    const wrapperStyle = "flex sm:grid grid-rows-1 grid-flow-col overflow-x-scroll gap-5 lg:gap-7 scrollbar-corner-transparent scrollbar scrollbar-thumb-cyan-500 scrollbar-track-transparent"
 
 
     return (
