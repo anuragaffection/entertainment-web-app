@@ -1,10 +1,12 @@
+
 import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AppsIcon from '@mui/icons-material/Apps';
 import { Button, Box } from '@mui/material';
-import userLogo from '../../assets/userLogo.jpg';
+
+
 
 export default function NavbarMenu() {
     const ITEM_HEIGHT = 48;
@@ -18,25 +20,16 @@ export default function NavbarMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const items = [
         {
-            name: "Code",
-            lastName: "Book",
-            image: userLogo,
-            link: 'https://github.com/anuragaffection/FullStackNotes'
-        },
-        {
-            name: 'Anurag',
-            lastName: "Affection",
-            image: userLogo,
-            link: 'https://anuragaffection.vercel.app/'
-        },
-        {
-            name: 'Resume',
-            lastName: 'Builder',
-            image: userLogo,
+            name: 'Resume Builder',
+            image: "https://logo.gklite.in/resume_builder.jpg",
             link: 'https://resume-builder-anurag.vercel.app/'
+        },
+        {
+            name: 'Anurag Affection',
+            image: "https://logo.gklite.in/anuragaffection.jpg",
+            link: 'https://anuragaffection.gklite.in/'
         },
     ];
 
@@ -44,8 +37,8 @@ export default function NavbarMenu() {
         <Box>
             <IconButton
                 sx={{
-                    color: '#5A698F',
-                    backgroundColor: '#161D2F',
+                    color: '#06b6d4',
+                    backgroundColor: '#020617',
                     '&:hover': {
                         color: '#06b6d4',
                     },
@@ -66,7 +59,7 @@ export default function NavbarMenu() {
                 onClose={handleClose}
                 PaperProps={{
                     style: {
-                        width: '32ch',
+                        width: '24ch',
                         maxHeight: ITEM_HEIGHT * 6.5,
                         backgroundColor: '#000000',
                     },
@@ -74,10 +67,10 @@ export default function NavbarMenu() {
             >
                 <Box
                     sx={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(2, 1fr)',
-                        gap: '24px',
-                        padding: '16px',
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: '12px',
+
                     }}
                 >
                     {items.map((item, index) => (
@@ -88,11 +81,12 @@ export default function NavbarMenu() {
                         >
                             <a
                                 href={item.link}
-
                                 style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
                                     width: '100%',
+                                    paddingLeft: "8px"
+
                                 }}
                             >
                                 <Button
@@ -100,7 +94,8 @@ export default function NavbarMenu() {
                                     sx={{
                                         width: '100%',
                                         display: 'flex',
-                                        flexDirection: 'column',
+                                        gap: "10px",
+                                        justifyContent: 'flex-start', // Align items horizontally to the start
                                         alignItems: 'center',
                                         '&:hover': {
                                             color: '#000000',
@@ -111,26 +106,17 @@ export default function NavbarMenu() {
                                     <img
                                         src={item.image}
                                         alt={item.name}
-                                        style={{ width: '24px', height: '24px', marginRight: '8px' }}
+                                        style={{ width: '32px', height: '32px', borderRadius: "50%" }}
                                     />
                                     <span
                                         style={{
-                                            maxWidth: '80px',
                                             textAlign: 'center',
                                             textTransform: 'capitalize'
                                         }}
                                     >
                                         {item.name}
                                     </span>
-                                    <span
-                                        style={{
-                                            maxWidth: '80px',
-                                            textAlign: 'center',
-                                            textTransform: 'capitalize'
-                                        }}
-                                    >
-                                        {item.lastName}
-                                    </span>
+
                                 </Button>
                             </a>
                         </MenuItem>
@@ -140,3 +126,4 @@ export default function NavbarMenu() {
         </Box >
     );
 }
+
