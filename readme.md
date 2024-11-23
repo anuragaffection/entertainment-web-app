@@ -69,7 +69,7 @@ The Entertainment App is a full-stack application designed to provide users with
 
 6.  **Verify Backend Setup:** Confirm that the backend server is running without any errors.
 
-### Backned Technologies
+### Backend Technologies
 - Node js 
 - Express js
 - jsonwebtoken
