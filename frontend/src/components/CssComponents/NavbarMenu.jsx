@@ -37,8 +37,8 @@ export default function NavbarMenu() {
         <Box>
             <IconButton
                 sx={{
-                    color: '#06b6d4',
-                    backgroundColor: '#020617',
+                    color: '#5A698F',
+                    // backgroundColor: '#020617',
                     '&:hover': {
                         color: '#06b6d4',
                     },
